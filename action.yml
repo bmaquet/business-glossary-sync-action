@@ -24,6 +24,7 @@ inputs:
 
   author:
     description: "The commit author name and email in the format 'Display Name <email@address.com>'. If not provided, uses peter-evans/create-pull-request default (github.actor)."
+    default: null
     required: false
 
 runs:
@@ -64,7 +65,8 @@ runs:
           Updates the business glossary at ${{ inputs.business_glossary_file }} with changes from Acryl DataHub.
 
           Automated changes by [acryldata/business-glossary-sync-action](https://github.com/acryldata/business-glossary-sync-action).
-        author: ${{ inputs.author || format('{0} <{1}+{0}@users.noreply.github.com>', github.actor, github.actor_id) }}
+        {# author: ${{ inputs.author || format('{0} <{1}+{0}@users.noreply.github.com>', github.actor, github.actor_id) }} #}
+        author: ${{ inputs.author }}
 
 branding:
   icon: "activity"
